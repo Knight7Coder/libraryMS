@@ -44,10 +44,10 @@ if (isset($_SESSION['lname']) && isset($_SESSION['lrole']) && ($_SESSION['lrole'
             }
 
             $query = $conn->prepare("INSERT INTO books(bookTitle, author, isbn, quantity,img_loc) VALUES (?,?,?,?,?)");
-            $query->bind_param('sssis',$bookTitle,$author,$isbn,$quantity,$img_name_db);
+            $query->bind_param('sssis', $bookTitle, $author, $isbn, $quantity, $img_name_db);
             $query->execute();
-            
-            
+
+
         }
     }
 } elseif ($_SESSION['lrole'] != 'Admin') {
