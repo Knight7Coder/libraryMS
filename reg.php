@@ -7,7 +7,7 @@ if (isset($_POST['register'])) {
 
     $email = $_POST['email'];
     $password = $_POST['password'];
-    $password = password_hash($password,PASSWORD_DEFAULT);
+    $password = password_hash($password, PASSWORD_DEFAULT);
     echo $password;
     $name = $_POST['name'];
     $address = $_POST['address'];
@@ -16,16 +16,16 @@ if (isset($_POST['register'])) {
     $id_num = $_POST['id_num'];
 
     $query = $conn->prepare("INSERT INTO registrations(Email,Password,Name,Address,Mobile_Number,Role,Id_number) VALUES(?,?,?,?,?,?,?)");
-    $query->bind_param('ssssisi',$email,$password,$name,$address,$mobile_num,$role,$id_num);
+    $query->bind_param('ssssisi', $email, $password, $name, $address, $mobile_num, $role, $id_num);
     $res = $query->execute();
     // $res = mysqli_query($conn, $query);
 
     if ($res) {
-    echo "<br>" . "Suceesfully registered";
-} else {
-    echo "error";
-}
+        echo "<br>" . "Suceesfully registered";
+    } else {
+        echo "error";
     }
+}
 
 
 ?>
@@ -47,8 +47,8 @@ if (isset($_POST['register'])) {
 
 <body>
 
-    <div class="container"  >
-        
+    <div class="container">
+
         <form class="row g-4 form" method="post" autocomplete="off">
             <h2 class="header"> User Registration</h2>
             <div class="col-md-6">

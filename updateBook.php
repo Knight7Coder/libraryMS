@@ -27,9 +27,9 @@ if (isset($_GET['updateid'])) {
         $newauthor = str_replace("'", "''", $newauthor);
         $newisbn = $_POST['isbn'];
         $newquantity = $_POST['quantity'];
-        
+
         // echo "bookTitle:" . $bookTitle;
-        
+
         if (isset($_FILES['imgFileName'])) {
             $img_name = $_FILES['imgFileName']['name'];
             $img_size = $_FILES['imgFileName']['size'];
@@ -49,18 +49,18 @@ if (isset($_GET['updateid'])) {
                         echo str_ireplace(".", "", $img_name) . '<br>';
                         $img_name_db = trim(uniqid(str_ireplace('.' . $img_ext, "", $img_name)) . '.' . $img_ext_lc);
                         $img_name_db = str_replace("'", '', $img_name_db);
-    
+
                         echo $img_name_db . '<br>';
                         $img_upload_path = 'assets/' . $img_name_db;
                         move_uploaded_file($tmp_name, $img_upload_path);
                     }
                 }
-    
+
             }
         }
         $query = $conn->prepare("UPDATE books set id = ?,bookTitle = ?, author = ?, isbn = ?, 
             quantity = ?, img_loc = ? WHERE id = '$id'");
-        $query->bind_param('isssis',$id,$newbookTitle,$newauthor,$newisbn,$newquantity,$img_name_db);
+        $query->bind_param('isssis', $id, $newbookTitle, $newauthor, $newisbn, $newquantity, $img_name_db);
         // $res = mysqli_query($conn, $query);
         $res = $query->execute();
         if ($res) {
@@ -94,7 +94,7 @@ if (isset($_GET['updateid'])) {
 <body>
     <div class="container text-center">
         <!-- < echo '<div>'.$bookTitle.'</div>';?> -->
-        
+
         <form class="form text-center" method="post" enctype="multipart/form-data">
             <h1 style="margin-bottom:100px">Update Book</h1>
             <div class="row ">
@@ -102,9 +102,8 @@ if (isset($_GET['updateid'])) {
                     <label class="bookTitlelabel" for="bookTitle">Book Title - </label>
                 </div>
                 <div class="col-8 mb-2">
-                    <input class="bookTitle" type="text" id="bookTitle" name="bookTitle" value="<?=($bookTitle ? htmlspecialchars($bookTitle) : ''); ?>"
-
-                        required><br>
+                    <input class="bookTitle" type="text" id="bookTitle" name="bookTitle"
+                        value="<?= ($bookTitle ? htmlspecialchars($bookTitle) : ''); ?>" required><br>
                 </div>
             </div>
             <div class="row ">
@@ -112,7 +111,8 @@ if (isset($_GET['updateid'])) {
                     <label class="authorlabel" style="width:100%" for="author">Author - </label>
                 </div>
                 <div class="col-8 mb-2 ">
-                    <input class="author" type="text" name="author" value="<?=($author ? htmlspecialchars($author) : ''); ?>" required><br>
+                    <input class="author" type="text" name="author"
+                        value="<?= ($author ? htmlspecialchars($author) : ''); ?>" required><br>
                 </div>
             </div>
             <div class="row ">
