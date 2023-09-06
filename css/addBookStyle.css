@@ -1,0 +1,48 @@
+.container{
+  margin-top:100px ;
+  
+  padding: 0px;
+  
+  
+}
+
+.form {
+  background-color: #ffc7ea;
+  border-radius: 20px;
+  padding: 100px;
+  border-radius: 10px;
+  box-shadow: 5px 10px 8px #888888;
+}
+
+.bookTitle,
+.author,
+.isbn,
+.quantity {
+  padding: 7px;
+  border-radius: 7px;
+  border: none;
+  width: 80%;
+  font-weight: 800;
+  /* text-align: start; */
+}
+
+.submit {
+  border-radius: 5px;
+  border: none;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  padding: 5px 20px 5px 20px;
+  background-color: #caedff;
+}
+.bookTitlelabel,
+.authorlabel,
+.isbnlabel,
+.quantitylabel,
+.bookimagelabel {
+  font-size: 20px;
+}
+
+.imgFileName {
+  margin-top: 0px;
+  justify-content: left;
+}
